@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#D2B48C"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+    
+    <TextView
+        android:id="@+id/db1lblNomeVitima"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome da Vítima:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    
+    <EditText
+        android:id="@+id/db1inpNomeVitima"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/db1lblNomeVitima"/>
+
+    <TextView
+        android:id="@+id/db1lblNomeMae"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome da Mãe:"
+        android:layout_below="@id/db1inpNomeVitima"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    
+    <EditText
+        android:id="@+id/db1inpNomeMae"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/db1lblNomeMae"/>
+    
+    <TextView
+        android:id="@+id/db1lblDataNascimento"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Data de Nascimento:"
+        android:layout_below="@id/db1inpNomeMae"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+        
+    <EditText 
+        android:id="@+id/db1inpDataNascimento"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:layout_below="@id/db1lblDataNascimento"/> 
+
+    <TableLayout
+            android:id="@+id/db1tableLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/db1inpDataNascimento"    >
+        
+            <TableRow
+                android:id="@+id/db1tableRow0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dip" >
+           
+                <TextView
+                     android:id="@+id/db1lblNoDocumento"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="No. Documento:"
+                     android:layout_alignParentLeft="true"
+                     android:layout_weight="1"
+                     android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+    
+                <TextView
+                     android:id="@+id/db1lblTipo"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Tipo:"
+                     android:layout_weight="1"
+                     android:textAppearance="?android:attr/textAppearanceMedium"
+                />                    
+                
+            </TableRow>        
+
+            <TableRow
+                android:id="@+id/db1tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dip" >
+                
+            <EditText 
+                android:id="@+id/db1inpNoDocumento"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLength="20"
+            /> 
+    
+            <Spinner
+                android:id="@+id/db1cbxTipoDoc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:entries="@array/tipoDoc"
+                android:maxLength="10"
+            />                 
+                
+            </TableRow>                
+        
+            <TableRow
+                android:id="@+id/db1tableRow2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dip" >
+                <TextView
+                   android:id="@+id/db1lblSexo"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Sexo:"
+                   android:layout_alignParentLeft="true"
+                   android:layout_weight="1"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+                <TextView
+                   android:id="@+id/db1lblRaca"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Raça:"
+                   android:layout_weight="1"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                />        
+                                
+            </TableRow>        
+            
+            <TableRow
+                android:id="@+id/db1tableRow3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dip" >
+
+               <Spinner
+                    android:id="@+id/db1cbxSexo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                />     
+
+                <Spinner
+                  android:id="@+id/db1cbxRaca"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_weight="1"
+                />                                                
+            </TableRow>
+            <TableRow
+                android:id="@+id/db1tableRow4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dip" > 
+            <Button
+                android:id="@+id/db1continuar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Continuar"
+                android:textSize="11dp"
+            />
+    
+            <Button
+                android:id="@+id/db1gravarESair"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gravar e Sair"
+                android:textSize="11dp"
+            />                
+                
+            <Button
+                android:id="@+id/db1cancelar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textSize="11dp"
+            />                
+            </TableRow>                           
+            
+    </TableLayout>
+      
+
+</RelativeLayout>

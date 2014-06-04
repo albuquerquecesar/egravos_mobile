@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#D2B48C"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+                     android:id="@+id/db2lblGrauSeveridade"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Grau de Severidade:"
+                     android:layout_alignParentLeft="true"
+                     android:layout_weight="1"
+                      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+            <Spinner
+                android:id="@+id/db2cbxGrauSeveridade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/db2lblGrauSeveridade"
+                
+            />                 
+   
+   
+    
+                <TextView
+                     android:id="@+id/db2lblTipoVitima"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Tipo de Vítima:"
+                     android:layout_below="@id/db2cbxGrauSeveridade"
+                     android:textAppearance="?android:attr/textAppearanceMedium"
+                />                    
+                
+                
+           
+            <Spinner
+                android:id="@+id/db2cbxTipoVitima"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/db2lblTipoVitima"
+                
+            />                             
+                
+                <TextView
+                   android:id="@+id/db2lblOcupacaoRelSetorTransporte"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Ocupação Relacionada ao Setor Transporte:"
+                   android:layout_alignParentLeft="true"
+                   android:layout_below="@id/db2cbxTipoVitima"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+                <Spinner
+                    android:id="@+id/db2cbxOcupacaoRelSetorTransporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                   android:layout_below="@id/db2lblOcupacaoRelSetorTransporte"
+                />     
+
+                
+                
+                <TextView
+                   android:id="@+id/db2lblNaturezaOcupacao"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Natureza da ocupação relacionada oa setor transporte:"
+                   android:layout_below="@id/db2cbxOcupacaoRelSetorTransporte"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                />        
+                                
+
+
+                <Spinner
+                  android:id="@+id/db2cbxNaturezaOcupacao"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_below="@id/db2lblNaturezaOcupacao"
+                />                                                
+
+                <TextView
+                   android:id="@+id/db2lblOutroTipoOcupacao"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Outro tipo ocupação relacionada oa setor transporte:"
+                   android:layout_below="@id/db2cbxNaturezaOcupacao"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                />        
+                                
+
+
+                <EditText
+                  android:id="@+id/db2txtcbxOutroTipoOcupacao"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_below="@id/db2lblOutroTipoOcupacao"
+                />                                                
+
+
+                
+
+               <TableLayout
+                   android:id="@+id/db1tableLayout1"
+                   android:layout_width="fill_parent"
+                   android:layout_height="fill_parent"
+                   android:layout_below="@id/db2txtcbxOutroTipoOcupacao"    >
+                   <TableRow
+                         android:id="@+id/db1tableRow4"
+                         android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                         android:padding="2dip" >  
+                                
+                        <Button
+                           android:id="@+id/db2continuar"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Continuar"
+                           android:textSize="11dp"
+                        />
+    
+                        <Button
+                          android:id="@+id/db2gravarESair"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="Gravar e Sair"
+                          android:textSize="11dp"
+                        />                
+                
+                        <Button
+                           android:id="@+id/db2cancelar"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Cancelar"
+                           android:textSize="11dp"
+                        />     
+            </TableRow>           
+        </TableLayout>  
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#D2B48C"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+ 
+    <ImageView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:src="@drawable/logo_eagravos_002">
+    </ImageView>
+  
+     
+    <Button
+	android:id="@+id/bntsincronizar"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="Sincronizar com o Servidor Web" />
+
+    <Button
+	android:id="@+id/bntregistrarocorrencia"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="Registrar Ocorrência" />
+    
+    <Button
+	android:id="@+id/bntenviardados"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="Enviar Dados para o Servidor Web" />
+        
+    <Button
+	android:id="@+id/bntsair"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="Sair" />
+
+
+    
+ 
+</LinearLayout>
