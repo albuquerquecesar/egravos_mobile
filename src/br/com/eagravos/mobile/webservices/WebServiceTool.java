@@ -34,7 +34,7 @@ public class WebServiceTool {
 	private static final String HEADER_TOKEN = "APITOKEN";
 	private static final String TOKEN_SEPARATOR = "::::";
 
-	public static final String HOST ="http://10.0.0.57:8084/Eagravos/rest/";
+	public static final String HOST ="http://10.0.0.57:8080/Eagravos/rest";
 	
 
 	public static JSONObject requestWebService(String serviceUrl) {

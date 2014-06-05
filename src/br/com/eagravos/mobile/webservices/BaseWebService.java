@@ -40,49 +40,54 @@ public abstract class BaseWebService<T extends IModel> {
 	public List<T> getAll(Integer limit, Integer offset) {
 
 		StringBuilder builder = new StringBuilder(WebServiceTool.HOST);
-
+		//capitaliza o primeiro caractere
+		String tmp=(""+this.getModelName().charAt(0)).toUpperCase();
+		tmp=tmp+this.getModelName().substring(1);
+		
 		builder.append("/");
 		builder.append(this.getResourceId());
-		builder.append("/list");
+		builder.append("/lista");
+		
+		builder.append(tmp);
 
 		return this.getAll(builder.toString(), this.getModelName());
 	}
 	
-	/**
-	 * Retorna uma lista de objetos do tipo passado pelo generics. Caso algum
-	 * erro ocorra devolve null.
-	 * Para pegar todos os registros de uma unica vez, limit e offset devem
-	 * ser igual a zero.
-	 * Pode-se passar uma data para trazer os registros que foram atualizados ou criados
-	 * a partir de uma data.
-	 * @param limit
-	 *            quantidade máxima de registros. Obrigatório.
-	 * @param offset
-	 *            índice para contagem do total de registros. Começa por zero.
-	 * @param dataLastUpdate a data da última atualização ou cadastro dos registros 
-	 * @return
-	 */
-	public List<T> getAll(Integer limit, Integer offset,Date dataLastUpdate){
-		StringBuilder builder = new StringBuilder(WebServiceTool.HOST);
-
-		builder.append("/");
-		builder.append(this.getResourceId());
-		builder.append("/list");
-		if (limit != null && offset != null) {
-			builder.append("/limit/");
-			builder.append(limit);
-			builder.append("/offset/");
-			builder.append(offset);
-		}
-
-		if (dataLastUpdate!= null){
-			builder.append("/filter/[");
-			Filter filter=new Filter("data_atualizacao_registro", DateFormat.getAmericanFormatDatetime(dataLastUpdate),Operator.GREATER_EQUAL);
-			builder.append(filter.toJson());
-			builder.append("]");
-		}
-		return this.getAll(builder.toString(), this.getModelName());
-	}
+//	/**
+//	 * Retorna uma lista de objetos do tipo passado pelo generics. Caso algum
+//	 * erro ocorra devolve null.
+//	 * Para pegar todos os registros de uma unica vez, limit e offset devem
+//	 * ser igual a zero.
+//	 * Pode-se passar uma data para trazer os registros que foram atualizados ou criados
+//	 * a partir de uma data.
+//	 * @param limit
+//	 *            quantidade máxima de registros. Obrigatório.
+//	 * @param offset
+//	 *            índice para contagem do total de registros. Começa por zero.
+//	 * @param dataLastUpdate a data da última atualização ou cadastro dos registros 
+//	 * @return
+//	 */
+//	public List<T> getAll(Integer limit, Integer offset,Date dataLastUpdate){
+//		StringBuilder builder = new StringBuilder(WebServiceTool.HOST);
+//
+//		builder.append("/");
+//		builder.append(this.getResourceId());
+//		builder.append("/list");
+//		if (limit != null && offset != null) {
+//			builder.append("/limit/");
+//			builder.append(limit);
+//			builder.append("/offset/");
+//			builder.append(offset);
+//		}
+//
+//		if (dataLastUpdate!= null){
+//			builder.append("/filter/[");
+//			Filter filter=new Filter("data_atualizacao_registro", DateFormat.getAmericanFormatDatetime(dataLastUpdate),Operator.GREATER_EQUAL);
+//			builder.append(filter.toJson());
+//			builder.append("]");
+//		}
+//		return this.getAll(builder.toString(), this.getModelName());
+//	}
 	
 	public T send(T t){
 		T model = null;
@@ -92,8 +97,10 @@ public abstract class BaseWebService<T extends IModel> {
 		String url=WebServiceTool.HOST+"/"+this.getResourceId();
 		
 			JSONObject tmp = WebServiceTool.requestPostWebService(url, data);
-			JSONObject object = this.getDataJSONObject(tmp,this.getModelName());
-			model=this.getModel(object);
+			if (tmp!= null){
+			
+			model=this.getModel(tmp);
+			}
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -117,17 +124,25 @@ public abstract class BaseWebService<T extends IModel> {
 		List<T> list = null;
 		try {
 			JSONObject tmp = WebServiceTool.requestWebService(url);
-			JSONArray array = this.getDataJSONArray(tmp, model);
+			if (tmp!= null){
+				try{
+					JSONArray array = this.getDataJSONArray(tmp, model);
 
-			if (this.success && array != null) {
-				list = new ArrayList<T>();
-				// pega o total
-				this.total = tmp.getJSONObject("data").getInt("totalCount");
-				this.subTotalLastRequest = array.length();
-				for (int i = 0; i < array.length(); i++) {
-					list.add(this.getModel(array.getJSONObject(i)));
+					if (array != null) {
+						list = new ArrayList<T>();
+						// pega o total
+						for (int i = 0; i < array.length(); i++) {
+							list.add(this.getModel(array.getJSONObject(i)));
+						}
+					}
+					//talvez tenha vindo somente um obejto
+				}catch(JSONException ex){
+
+					list = new ArrayList<T>();
+					list.add(this.getModel(tmp));
 				}
 			}
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			list = null;
@@ -143,10 +158,10 @@ public abstract class BaseWebService<T extends IModel> {
 	 * @param url
 	 * @return
 	 */
-	protected List<T> getAll(String url) {
-
-		return this.getAll(url, this.getModelName());
-	}
+//	protected List<T> getAll(String url) {
+//
+//		return this.getAll(url, this.getModelName());
+//	}
 
 	/**
 	 * 
@@ -159,9 +174,9 @@ public abstract class BaseWebService<T extends IModel> {
 
 			try {
 				// não houve nenhum erro interno.
-				if (jsonObject.getBoolean("success")) {
+				if (jsonObject != null) {
 					this.success = true;
-					return jsonObject.getJSONObject("data").getJSONArray(model);
+					return jsonObject.getJSONArray(model);
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -173,30 +188,33 @@ public abstract class BaseWebService<T extends IModel> {
 
 	}
 
-	/**
-	 * 
-	 * @param jsonObject
-	 * @param model
-	 * @return
-	 */
-	public JSONObject getDataJSONObject(JSONObject jsonObject, String model) {
-		if (jsonObject != null) {
-
-			try {
-				// não houve nenhum erro interno.
-					this.success = true;
-					return jsonObject.getJSONObject("data")
-							.getJSONObject(model);
-				
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		return null;
-
-	}
+//	/**
+//	 * 
+//	 * @param jsonObject
+//	 * @param model
+//	 * @return
+//	 */
+//	public JSONObject getDataJSONObject(JSONObject jsonObject, String model) {
+//		if (jsonObject != null) {
+//
+//			try {
+//				// não houve nenhum erro interno.
+//					this.success = true;
+//					return jsonObject.getJSONObject("data")
+//							.getJSONObject(model);
+//				
+//			} catch (JSONException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();//	protected List<T> getAll(String url) {
+	//
+//	return this.getAll(url, this.getModelName());
+//}
+//			}
+//		}
+//
+//		return null;
+//
+//	}
 
 	/**
 	 * @return the total
