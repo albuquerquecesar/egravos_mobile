@@ -21,7 +21,7 @@ public class Estados  extends IModel<Estados> implements java.io.Serializable {
      private String estadoNome;
      private String estadoSigla;
      private String estadoCodigoIbge;
-     private Set regionaises = new HashSet(0);
+     //private Set regionaises = new HashSet(0);
 
     public Estados() {
     }

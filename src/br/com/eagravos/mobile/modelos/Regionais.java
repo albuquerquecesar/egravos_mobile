@@ -13,10 +13,10 @@ public class Regionais  extends IModel<Regionais> implements java.io.Serializabl
 
 
      private Integer id;
-     private Estados estados;
+     //private Estados estados;
      private String regionalNome;
      private String regionalCodigoIbge;
-     private Set cidadeses = new HashSet(0);
+    // private Set cidadeses = new HashSet(0);
 
     public Regionais() {
     }

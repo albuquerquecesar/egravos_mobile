@@ -26,27 +26,27 @@ public abstract class BaseWebService<T extends IModel> {
 
 	protected abstract T getModel(JSONObject jsonObject) throws JSONException;
 
-//	/**
-//	 * Retorna uma lista de objetos do tipo passado pelo generics. Caso algum
-//	 * erro ocorra devolve null.
-//	 * Para pegar todos os registros de uma unica vez, limit e offset devem
-//	 * ser igual a zero.
-//	 * @param limit
-//	 *            quantidade máxima de registros. Obrigatório.
-//	 * @param offset
-//	 *            índice para contagem do total de registros. Começa por zero.
-//	 * @return
-//	 */
-//	public List<T> getAll() {
-//
-//		StringBuilder builder = new StringBuilder(WebServiceTool.HOST);
-//
-//		builder.append("/");
-//		builder.append(this.getResourceId());
-//		builder.append("/list");
-//
-//		return this.getAll(builder.toString(), this.getModelName());
-//	}
+	/**
+	 * Retorna uma lista de objetos do tipo passado pelo generics. Caso algum
+	 * erro ocorra devolve null.
+	 * Para pegar todos os registros de uma unica vez, limit e offset devem
+	 * ser igual a zero.
+	 * @param limit
+	 *            quantidade máxima de registros. Obrigatório.
+	 * @param offset
+	 *            índice para contagem do total de registros. Começa por zero.
+	 * @return
+	 */
+	public List<T> getAll(Integer limit, Integer offset) {
+
+		StringBuilder builder = new StringBuilder(WebServiceTool.HOST);
+
+		builder.append("/");
+		builder.append(this.getResourceId());
+		builder.append("/list");
+
+		return this.getAll(builder.toString(), this.getModelName());
+	}
 	
 	/**
 	 * Retorna uma lista de objetos do tipo passado pelo generics. Caso algum

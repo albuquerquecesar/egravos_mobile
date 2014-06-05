@@ -22,6 +22,10 @@ public class EstadosWebService extends BaseWebService<Estados>{
 	@Override
 	protected Estados getModel(JSONObject jsonObject) throws JSONException {
 		// TODO Auto-generated method stub
+		if (jsonObject!= null){
+
+			return new Estados(jsonObject);
+		}
 		return null;
 	}
 
