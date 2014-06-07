@@ -13,7 +13,7 @@ public class InstituicaoTb  extends IModel<InstituicaoTb> implements java.io.Ser
 
 
      private Integer id;
-     //private Cidades cidades;
+     private Cidades cidades;
      private String codigo;
      private String nome;
      private String endereco;

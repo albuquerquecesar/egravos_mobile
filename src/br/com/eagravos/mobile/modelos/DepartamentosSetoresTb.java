@@ -13,7 +13,7 @@ public class DepartamentosSetoresTb extends IModel<DepartamentosSetoresTb> imple
 
 
      private Integer id;
-     //private DepartamentosTb departamentosTb;
+     private DepartamentosTb departamentosTb;
      private String codigoSetor;
      private String nomeSetor;
 

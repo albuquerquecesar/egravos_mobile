@@ -12,7 +12,7 @@ public class FichaAcidenteLocalAtendimentoDAO extends GenericDb4oDAO<FichaAciden
 			FichaAcidenteIdLocalAtendimento model, ObjectContainer db) {
 		Query query=db.query();
 		query.constrain(FichaAcidenteIdLocalAtendimento.class);
-		query.descend("numeroRegistro").constrain(model.getId());
+		query.descend("numeroRegistro").constrain(model.getNumeroRegistro());
 		
 		return query;
 	}

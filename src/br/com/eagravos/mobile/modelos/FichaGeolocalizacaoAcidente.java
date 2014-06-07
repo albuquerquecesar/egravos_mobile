@@ -1,6 +1,9 @@
 package br.com.eagravos.mobile.modelos;
 // Generated 02/06/2014 08:44:54 by Hibernate Tools 3.6.0
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import br.com.eagravos.mobile.interfaces.IModel;
 
 
@@ -27,7 +30,17 @@ public class FichaGeolocalizacaoAcidente  extends IModel<FichaGeolocalizacaoAcid
        this.idAparelhoNotificador = idAparelhoNotificador;
     }
    
-    public int getFichaAcidenteIdAcidentadoId() {
+    public FichaGeolocalizacaoAcidente(JSONObject jsonObject) throws JSONException {
+		if (jsonObject!= null){
+			
+			this.fichaAcidenteIdAcidentadoId=jsonObject.getInt("fichaAcidenteIdAcidentadoId");
+			this.idAparelhoNotificador=jsonObject.getString("idAparelhoNotificador");
+			this.latitude=jsonObject.getString("latitude");
+			this.longitude=jsonObject.getString("longitude");
+		}
+	}
+
+	public int getFichaAcidenteIdAcidentadoId() {
         return this.fichaAcidenteIdAcidentadoId;
     }
     
@@ -78,6 +91,11 @@ public class FichaGeolocalizacaoAcidente  extends IModel<FichaGeolocalizacaoAcid
 
 
 
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return this.latitude+" --- "+this.longitude;
+    }
 
 }
 

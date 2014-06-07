@@ -13,11 +13,11 @@ public class DepartamentosTb  extends IModel<DepartamentosTb> implements java.io
 
 
      private Integer id;
-    // private UnidadeSaude unidadeSaude;
+     private UnidadeSaude unidadeSaude;
      private String codigo;
      private String nome;
      private String responsavel;
-     //private Set departamentosSetoresTbs = new HashSet(0);
+     private Set departamentosSetoresTbs = new HashSet(0);
 
     public DepartamentosTb() {
     }

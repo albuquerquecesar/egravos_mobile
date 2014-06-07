@@ -1,6 +1,9 @@
 package br.com.eagravos.mobile.modelos;
 // Generated 02/06/2014 08:44:54 by Hibernate Tools 3.6.0
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import br.com.eagravos.mobile.interfaces.IModel;
 
 
@@ -24,7 +27,16 @@ public class Sexo  extends IModel<Sexo> implements java.io.Serializable {
        this.sexo = sexo;
     }
    
-    public Integer getId() {
+    public Sexo(JSONObject jsonObject) throws JSONException {
+		
+    	if (jsonObject!= null){
+    		this.codigo=jsonObject.getString("codigo");
+    		this.id=jsonObject.getInt("id");
+    		this.sexo=jsonObject.getString("sexo");
+    	}
+	}
+
+	public Integer getId() {
         return this.id;
     }
     

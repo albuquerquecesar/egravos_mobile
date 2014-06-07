@@ -24,6 +24,8 @@ public abstract class BaseWebService<T extends IModel> {
 	
 	protected abstract String getModelName();
 
+	protected abstract String getKeyModel();
+	
 	protected abstract T getModel(JSONObject jsonObject) throws JSONException;
 
 	/**
@@ -41,16 +43,16 @@ public abstract class BaseWebService<T extends IModel> {
 
 		StringBuilder builder = new StringBuilder(WebServiceTool.HOST);
 		//capitaliza o primeiro caractere
-		String tmp=(""+this.getModelName().charAt(0)).toUpperCase();
-		tmp=tmp+this.getModelName().substring(1);
+//		String tmp=(""+this.getModelName().charAt(0)).toUpperCase();
+//		tmp=tmp+this.getModelName().substring(1);
 		
 		builder.append("/");
 		builder.append(this.getResourceId());
 		builder.append("/lista");
 		
-		builder.append(tmp);
+		builder.append(this.getModelName());
 
-		return this.getAll(builder.toString(), this.getModelName());
+		return this.getAll(builder.toString(), this.getKeyModel());
 	}
 	
 //	/**

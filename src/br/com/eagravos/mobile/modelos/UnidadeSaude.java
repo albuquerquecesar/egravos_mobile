@@ -13,12 +13,12 @@ public class UnidadeSaude  extends IModel<UnidadeSaude> implements java.io.Seria
 
 
      private Integer id;
-     //private TiposUnidade tiposUnidade;
-     //private Cidades cidades;
+     private TiposUnidade tiposUnidade;
+     private Cidades cidades;
      private String numeroCnes;
      private String nomeDaUnidade;
      private String tipoUnidade;
-     //private Set departamentosTbs = new HashSet(0);
+     private Set departamentosTbs = new HashSet(0);
 
     public UnidadeSaude() {
     }

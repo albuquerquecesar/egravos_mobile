@@ -3,28 +3,26 @@ package br.com.eagravos.mobile.webservices;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.eagravos.mobile.modelos.Estados;
+import br.com.eagravos.mobile.modelos.Sexo;
 
-public class EstadosWebService extends BaseWebService<Estados>{
+public class SexoWebService extends BaseWebService<Sexo> {
 
 	@Override
 	protected String getResourceId() {
-		// TODO Auto-generated method stub
-		return "webServiceEstado";
+		
+		return "webServiceSexo";
 	}
 
 	@Override
 	protected String getModelName() {
 		// TODO Auto-generated method stub
-		return "Estado";
+		return "Sexo";
 	}
 
 	@Override
-	protected Estados getModel(JSONObject jsonObject) throws JSONException {
-		// TODO Auto-generated method stub
+	protected Sexo getModel(JSONObject jsonObject) throws JSONException {
 		if (jsonObject!= null){
-
-			return new Estados(jsonObject);
+			return new Sexo(jsonObject);
 		}
 		return null;
 	}
@@ -32,7 +30,7 @@ public class EstadosWebService extends BaseWebService<Estados>{
 	@Override
 	protected String getKeyModel() {
 		// TODO Auto-generated method stub
-		return "estados";
+		return "sexo";
 	}
 
 }

@@ -52,13 +52,22 @@ public class ContatosWebService extends BaseWebService<Contatos>{
 	@Override
 	protected Contatos getModel(JSONObject jsonObject) throws JSONException {
 		
-		return new Contatos(jsonObject);
+		if (jsonObject!= null){
+			return new Contatos(jsonObject);
+		}
+		return null;
 	}
 
 	
 
 	@Override
 	protected String getModelName() {
+		// TODO Auto-generated method stub
+		return "Contatos";
+	}
+
+	@Override
+	protected String getKeyModel() {
 		// TODO Auto-generated method stub
 		return "contatos";
 	}

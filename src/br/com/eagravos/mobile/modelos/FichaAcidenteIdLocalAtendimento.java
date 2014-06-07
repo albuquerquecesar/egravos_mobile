@@ -11,7 +11,7 @@ import java.util.Date;
 public class FichaAcidenteIdLocalAtendimento  extends IModel<FichaAcidenteIdLocalAtendimento> implements java.io.Serializable {
 
 
-	erro de proposito, o numero do registro identifica o objeto unicamente?????
+	
      private String numeroRegistro;
      private int cidadeNotificacaoId;
      private String numeroNotificacao;

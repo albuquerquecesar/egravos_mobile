@@ -15,7 +15,7 @@ public class TiposUnidade  extends IModel<TiposUnidade> implements java.io.Seria
      private Integer id;
      private String codigoTipo;
      private String descricaoTipo;
-     //private Set unidadeSaudes = new HashSet(0);
+     private Set unidadeSaudes = new HashSet(0);
 
     public TiposUnidade() {
     }

@@ -1,6 +1,9 @@
 package br.com.eagravos.mobile.modelos;
 // Generated 02/06/2014 08:44:54 by Hibernate Tools 3.6.0
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import br.com.eagravos.mobile.interfaces.IModel;
 
 
@@ -24,7 +27,15 @@ public class GrauSeveridadeAcidente  extends IModel<GrauSeveridadeAcidente> impl
        this.severidade = severidade;
     }
    
-    public Integer getId() {
+    public GrauSeveridadeAcidente(JSONObject jsonObject) throws JSONException {
+		if (jsonObject!= null){
+			this.codigo=jsonObject.getString("codigo");
+			this.id=jsonObject.getInt("id");
+			this.severidade=jsonObject.getString("severidade");
+		}
+	}
+
+	public Integer getId() {
         return this.id;
     }
     
